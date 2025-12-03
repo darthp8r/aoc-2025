@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling >= 1.28"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aoc2025"
+version = "2025.1"
+authors = [
+    { name="darthp8r", email="darthp8r@gmail.com" },
+]
+description = "Advent of Code 2025 in python"
+dependencies = [
+    "mamba==0.11.3",
+    "expects==0.9.0",
+]
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "Unlicense"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/darthp8r/aoc2025"
+
