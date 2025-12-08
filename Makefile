@@ -24,6 +24,10 @@ ruby:
 python:
 	$(call hoser,python,spec,_spec.py)
 
+.PHONY: go
+go:
+	$(call hoser,go,spec,_spec.go)
+
 
 .PHONY: all
 all:	ruby python
