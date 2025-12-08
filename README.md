@@ -10,10 +10,11 @@ and probably not get very far at all with COBOL.
 
 This year it's [FreeBSD](https://www.freebsd.org) 14.3-RELEASE for my development environment.
 
-|   ruby    |   3.4.7   |   ruby-3      |   3.3.9 system, 3.4.7 virtualized in rvm
-|   python  |   3.11.13 |   python311   |
-|   elixir  |   1.17    |   elixir      |   erlang 26.2.5.15,4
-|   cobol   |   3.2-3   |   gnucobol    |
+|   ruby    |   3.4.7   |   ruby-3      |   rspec   |   3.3.9 system, 3.4.7 virtualized in rvm
+|   python  |   3.11.13 |   python311   |   mamba   |
+|   go      |   1.24-13 |   go          |   ginkgo  |
+|   elixir  |   1.17    |   elixir      |   UNK     |   erlang 26.2.5.15,4
+|   cobol   |   3.2-3   |   gnucobol    |   UNK     |
 
 Support structures
 
