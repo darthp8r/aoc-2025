@@ -12,7 +12,7 @@ import (
 
 var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 	Context("Sample", func() {
-		subject := SecretEntrance { FileToList("aoc2025/day_01_sample.txt") }
+		subject := NewSecretEntrance(FileToList("day_01_sample.txt"))
 
 		Describe("Part 1", Label("Zeroes"), func() {
 			It("dunsels", func(ctx SpecContext) {
@@ -32,7 +32,7 @@ var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 	})
 
 	Context("Actual", func() {
-		subject := SecretEntrance { FileToList("aoc2025/day_01_actual.txt") }
+		subject := NewSecretEntrance(FileToList("day_01_actual.txt"))
 
 		Describe("Part 1", Label("Zeroes"), func() {
 			It("actual answer above", func(ctx SpecContext) {
