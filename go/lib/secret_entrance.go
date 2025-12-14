@@ -2,7 +2,6 @@ package aoc2025
 
 import (
 	"strconv"
-	"fmt"
 )
 
 type SecretEntrance struct {
@@ -19,6 +18,7 @@ func NewSecretEntrance(turns []string) *SecretEntrance {
 		Turns: make([]int, 0),
 	}
 
+	//	encode left turns as negative
 	for _, turn := range turns {
 		amount, _ := strconv.Atoi(turn[1:])
 		switch turn[0] {
@@ -27,7 +27,7 @@ func NewSecretEntrance(turns []string) *SecretEntrance {
 		case 'R':
 			me.Turns = append(me.Turns, amount)
 		default:
-			me.Turns = append(me.Turns, 0)
+			//
 		}
 	}
 
@@ -35,17 +35,52 @@ func NewSecretEntrance(turns []string) *SecretEntrance {
 }
 
 
-func (me SecretEntrance) Dunsel() int {
-	fmt.Println(me.Turns)
-
-	return len(me.Turns)
-}
-
 func (me SecretEntrance) Zeroes() int {
-	return len(me.Turns)
+	combination := 0
+	position := 50
+
+	for _, turn := range me.Turns {
+		position += turn
+		position %= 100
+		if position == 0 {
+			combination++
+		}
+	}
+
+	return combination
 }
+
 
 func (me SecretEntrance) Clicks() int {
-	return len(me.Turns)
+	combination := 0
+	position := 50
+	landing := 0
+
+	for _, turn := range me.Turns {
+		if turn < 0 {
+			combination -= turn / 100
+		} else {
+			combination += turn / 100
+		}
+		landing = position + (turn % 100)
+
+		switch {
+		case landing < 0:
+			if position != 0 {
+				combination++
+			}
+			position = landing + 100
+		case landing == 0:
+			combination++
+			position = landing
+		case landing < 100:
+			position = landing
+		default:
+			combination++
+			position = landing - 100
+		}
+	}
+
+	return combination
 }
 
