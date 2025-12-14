@@ -16,7 +16,20 @@ var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 
 		Describe("Part 1", Label("Zeroes"), func() {
 			It("dunsels", func(ctx SpecContext) {
-				subject.Zeroes()
+				fmt.Println(subject.Zeroes())
+			})
+
+			//	ruby and python evaluate (-1244 % 100) to 56; just saying
+			//	those codes didn't represent left turns as negative, though
+			It("modulus (%) preserves sign", func(ctx SpecContext) {
+				Expect(-1244 % 100).To(Equal(-44))
+			})
+
+			//	ruby evaluates (-1244 / 100) to -13
+			//	python evaluates int(-1244 / 100) to -12
+			//	go agrees with python
+			It("whole division (/) preserves sign", func(ctx SpecContext) {
+				Expect(-1244 / 100).To(Equal(-12))
 			})
 
 			It("sample data agrees", func(ctx SpecContext) {
