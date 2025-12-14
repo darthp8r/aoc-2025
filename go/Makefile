@@ -3,7 +3,7 @@
 all:  vet test
 
 .PHONY: spec
-spec:	test
+spec: test
 
 .PHONY: test
 test:
