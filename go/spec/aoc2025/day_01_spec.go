@@ -16,7 +16,7 @@ var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 
 		Describe("Part 1", Label("Zeroes"), func() {
 			It("dunsels", func(ctx SpecContext) {
-				fmt.Println(subject.Zeroes())
+				subject.Zeroes()
 			})
 
 			//	ruby and python evaluate (-1244 % 100) to 56; just saying
