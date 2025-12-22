@@ -11,11 +11,7 @@ defmodule Aoc2025.Support do
   # temporary; will go away once file_to_list/1 is correct
   #
   def main do
-    lyst = file_to_list "/tmp/file_to_list.txt"
-
-  # IO.puts("lyst=<#{lyst}>") # again, victim of the print statement
-
-    Enum.each(lyst, fn item -> IO.puts("<#{item}>") end)
+    IO.inspect file_to_list "/tmp/file_to_list.txt"
   end
 end
 
