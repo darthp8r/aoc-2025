@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 
 	. "darthp8r.net/aoc2025/lib"
-	. "darthp8r.net/aoc2025/support"
+	. "darthp8r.net/aoc2025/spec/support"
 )
 
 var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
