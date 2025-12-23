@@ -28,7 +28,11 @@ python:
 go:
 	$(call hoser,go,spec,_spec.go)
 
+.PHONY: elixir
+elixir:
+	$(call hoser,elixir,spec,_spec.elx)
+
 
 .PHONY: all
-all:	ruby python
+all:	ruby python go elixir
 
