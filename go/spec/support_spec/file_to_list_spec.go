@@ -1,10 +1,10 @@
-package aoc2025
+package aoc2025_test
 
 import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	. "darthp8r.net/aoc2025/support"
+	. "darthp8r.net/aoc2025/spec/support"
 )
 
 var _ = Describe("Transpose a data file into a list of strings", Label("file_to_list"), func() {
