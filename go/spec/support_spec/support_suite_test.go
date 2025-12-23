@@ -15,6 +15,6 @@ import (
 */
 func TestAoc2025(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Aoc2025 Shared")
+	RunSpecs(t, "Aoc2025 Spec Support")
 }
 
