@@ -8,6 +8,7 @@ spec: test
 .PHONY: test
 test:
 	ginkgo -v spec/aoc2025
+	#ginkgo -v spec/aoc2025 spec spec/support_spec
 
 .PHONY: vet
 vet:
