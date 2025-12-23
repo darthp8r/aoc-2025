@@ -1,21 +1,50 @@
-#   Advent of Code 2025, python edition
+#   Aoc2025 (Python 3.13.11)
+
+Advent-of-Code 2025
+
+>   Note: lots of copy-pasta from the ruby README
 
 
-##  Mamba is RSpec for Python
+##  Installation
 
-_I'm still smitten with the rspec test regime_
+Standard stuff:
+Add this line to your application's dependencies:
 
 ```
-% python -m venv .venv
-% pip install --upgrade pip
-% pip install -e .
-%
-% PYTHONPATH=. mamba spec
+"aoc2025>=2025.0"
 ```
 
 
+##  Usage
 
-##  Building the wheel
+```python
+import aoc2025
+```
+
+And then execute:
+
+    $ pip install aoc2025
+
+
+##  Testing
+
+_`mamba` is RSpec for Python_
+
+    $ PYTHONPATH=. mamba spec
+
+
+##  Development
+
+Setup your virtual environment:
+
+    $ python -m venv .venv
+    $ pip install --upgrade pip
+    $ pip install -e .
+    $
+    $ PYTHONPATH=. mamba spec
+
+
+### Building the wheel
 
 _How are wheels built nowadays?_
 
