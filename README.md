@@ -24,6 +24,29 @@ Support structures
 |   lynx        |   2.8.9.1-3.1 |   text/console web browser    |
 |   markdown    |   1.0.1-2     |   convert markdown to html    |
 |   pandoc      |   3.8.1-1     |   hs-pandoc convert markdown to html    |
+|   rtd_theme   |   1.0.0-1     |   sphinx documentation generator theme    |
+
+
+##  Write All About It
+
+Each `README.md` file talks about each language's peculiarities individually:
+the `docs` folder talks about them comparitively. Built using `sphinx` and its
+`read-the-docs` theme.
+
+```
+sphinx-quickstart
+    --sep
+    -p "Advent of Code 2025, Polyglot Edition"
+    -a DarthP8r
+    -v 2025
+    -r 2025
+    -l en
+    --ext-todo
+    --ext-viewcode
+    --ext-githubpages
+    --makefile
+    sphinx
+```
 
 
 ##  General Approach
