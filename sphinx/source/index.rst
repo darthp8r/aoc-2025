@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Advent of Code 2025, Polyglot Edition's documentation!
-=================================================================
+Advent of Code 2025, Polyglot Edition
+=====================================
 
 .. toctree::
    :maxdepth: 2
