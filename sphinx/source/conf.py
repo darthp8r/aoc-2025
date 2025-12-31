@@ -20,7 +20,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
-    'sphinx_rtd_theme',
+  # 'sphinx_rtd_theme',
 ]
 
 templates_path = ['_templates']
@@ -35,7 +35,10 @@ pygments_style = "sphinx"
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
+import sphinx_readable_theme
+html_theme = 'readable'
+html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
 html_static_path = ['_static']
 
 # -- Options for todo extension ----------------------------------------------
