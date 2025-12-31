@@ -33,6 +33,11 @@ elixir:
 	$(call hoser,elixir,spec,_spec.elx)
 
 
+.PHONY: sphinx
+sphinx:
+	@cd sphinx; $(MAKE) html
+
+
 .PHONY: all
-all:	ruby python go elixir
+all:	ruby python go elixir sphinx
 
