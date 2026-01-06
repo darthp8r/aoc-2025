@@ -1,6 +1,7 @@
 require "aoc2025/version"
 
 require "aoc2025/secret_entrance"
+require "aoc2025/gift_shop"
 
 module Aoc2025
   class Error < StandardError; end
