@@ -1,6 +1,9 @@
 #ifndef __AOC2025__
 #define __AOC2025__
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #include <sys/types.h>
 
 /*  linked list of non-empty lines of strings */
@@ -16,6 +19,7 @@ typedef struct list_s {
     long long int z;      /*  one integer: 01 */
     size_t        nn[2];  /*  two natural: 02 */
   } u;
+
   struct list_s *next;
 } list_t;
 
@@ -40,8 +44,8 @@ memdup(const void *source, size_t length);
 
 
 /*  all the challenges */
-aoc_t *secret_entrance(const list_t *data);
-aoc_t *gift_shop(const list_t *data);
+aoc_t *secret_entrance(list_t *data);
+aoc_t *gift_shop(list_t *data);
 
 
 #endif
