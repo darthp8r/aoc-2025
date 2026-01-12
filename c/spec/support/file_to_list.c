@@ -57,7 +57,7 @@ line_by_line(FILE *fp)
   }
 
   /*  malloc(1) failed on content */
-  else if ((next->text = malloc(1+length)) == NULL) {
+  else if ((next->u.str.text = malloc(1+length)) == NULL) {
     free(next);
     return NULL;
   }
@@ -65,8 +65,8 @@ line_by_line(FILE *fp)
   /*  copy content and progress to the next line */
   else {
 //  printf("[%s] [%lu]\n", text, length);
-    strcpy(next->text, text);
-    next->strlen = length;
+    strcpy(next->u.str.text, text);
+    next->u.str.strlen = length;
     next->next = line_by_line(fp);
     return next;
   }

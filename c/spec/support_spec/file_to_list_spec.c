@@ -17,9 +17,9 @@ spec("file_to_list") {
     }
 
     it("separates lines") {
-      check(!(strcmp("payter", subject->text)));
-      check(!(strcmp("is a", subject->next->text)));
-      check(!(strcmp("hosehead", subject->next->next->text)));
+      check(!(strcmp("payter", subject->u.str.text)));
+      check(!(strcmp("is a", subject->next->u.str.text)));
+      check(!(strcmp("hosehead", subject->next->next->u.str.text)));
     }
   }
 }

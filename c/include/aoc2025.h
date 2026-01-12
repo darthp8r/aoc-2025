@@ -5,8 +5,17 @@
 
 /*  linked list of non-empty lines of strings */
 typedef struct list_s {
-  char          *text;
-  size_t        strlen;
+  union {
+    /*  input file */
+    struct {
+      char    *text;
+      size_t  strlen;
+    } str;
+
+    /*  challenge support: by day */
+    long long int z;      /*  one integer: 01 */
+    size_t        nn[2];  /*  two natural: 02 */
+  } u;
   struct list_s *next;
 } list_t;
 
