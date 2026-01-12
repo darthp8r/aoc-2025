@@ -32,7 +32,7 @@ spec("Secret Entrance") {
 
     describe("Part 1") {
       it("actual answer ==>") {
-        printf("%lu\n", subject->part1(subject->data));
+        printf("%lu ", subject->part1(subject->data));
       }
 
       it("results survive") {
@@ -42,7 +42,7 @@ spec("Secret Entrance") {
 
     describe("Part 2") {
       it("actual answer ==>") {
-        printf("%lu\n", subject->part2(subject->data));
+        printf("%lu ", subject->part2(subject->data));
       }
 
       it("results survive") {
