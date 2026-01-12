@@ -32,6 +32,10 @@ go:
 elixir:
 	$(call hoser,elixir,spec,_spec.elx)
 
+.PHONY: c
+c:
+	$(call hoser,c,spec,_spec.c)
+
 
 .PHONY: sphinx
 sphinx:
@@ -39,5 +43,5 @@ sphinx:
 
 
 .PHONY: all
-all:	ruby python go elixir sphinx
+all:	ruby python go elixir sphinx c
 
