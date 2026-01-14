@@ -4,5 +4,5 @@ $(OBJECTS): %.o: %.c
 	$(CC) -Iinclude -o $@ -c $<
 
 $(LIBRARY): $(OBJECTS) #| $(DEPLOY)
-	ar -rc $@ $(OBJECTS)
+	$(AR) -rc $@ $(OBJECTS)
 
