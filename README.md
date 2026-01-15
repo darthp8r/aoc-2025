@@ -1,21 +1,23 @@
 #   Advent of Code 2025, Polyglot Edition
 
-_Implementations in ruby, python, go, elixir, and probably not cobol_
+_Implementations in ruby, python, go, elixir, c, but probably not cobol_
 
-Ruby because I love it. Python and Go because they're popular. Elixir because cool. COBOL because not.
-
-I'll commit to ruby, python, go, and elixir,
-but probably not get very far at all with COBOL.
+Ruby because I love it.
+Python and Go because they're popular.
+Elixir because cool.
+C because kids.
+COBOL (maybe) because it keeps surfacing in my news feeds or other interest vehicles.
 
 This year it's [FreeBSD](https://www.freebsd.org) 14.3-RELEASE for my development environment.
 
-| language  | version   | pkg install   | testing   | notes |
-| --------- | --------- | ------------- | --------- |   ---------   |
-|   ruby    |   3.4.7   |   ruby-3      |   rspec   |   3.3.9 system, 3.4.7 virtualized in rvm  |
-|   python  |   3.11.13 |   python311   |   mamba   |   |
-|   go      |   1.24-13 |   go          |   ginkgo  |   |
-|   elixir  |   1.17    |   elixir      |   espec   |   erlang 26.2.5.15,4  |
-|   cobol   |   3.2-3   |   gnucobol    |   UNK     |   |
+| language  | version   | pkg install   | testing       | notes |
+| --------- | --------- | ------------- | ------------- | ------------- |
+|   ruby    |   3.4.7   |   ruby-3      |   rspec       |   3.3.9 system, 3.4.7 virtualized in rvm  |
+|   python  |   3.11.13 |   python311   |   mamba       |   |
+|   go      |   1.24-13 |   go          |   ginkgo      |   |
+|   elixir  |   1.17    |   elixir      |   espec       |   erlang 26.2.5.15,4  |
+|   c       |   19.1.7  |   (n/a)       |   bdd-for-c   |   |
+|   cobol   |   3.2-3   |   gnucobol    |   UNK         |   |
 
 Support structures
 
