@@ -36,6 +36,8 @@ This year, I'll attack each day's challenge in four different languages:
 #. python
 #. go
 #. elixir
+#. c
+#. *cobol*
 
 My past Advents were only in ruby, so its object-oriented paradigm shined.
 I was trivially able to preserve that model with python, but when I got to go,
@@ -109,6 +111,84 @@ of the UpperCamelCase chapter/module name.
 
 I confess I like/appreciate the statelessness of the elixir approach,
 maybe because fresh.
+
+C is portable assembly, so you gotta do everything.
+I won't package it up with poudriere (or rpm or deb or whatever).
+I *will* shoehorn in the ``file_to_list`` idiom, where the ``list_t`` payload
+is unionized against whatever each challenge requires; naming will be fun.
+
+.. code-block:: c
+   :linenos:
+   :caption: Generic list payload
+
+      typedef struct list_s {
+         union {
+            struct {
+               char *text;
+               size_t strlen;
+            } str;
+            long long int z;
+            size_t nn[2];
+         } u;
+
+         struct list_s *next;
+      } list_t;
+
+The *constructor* will take in a ``list_t *`` chain with the ``.u.str``
+populated, and will return an ``aoc_t`` structure that contains a ``list_t *``
+chain that's possibly/likely been processed, and addresses to the ``part1`` and
+``part2`` reductions.
+
+.. code-block:: c
+   :linenos:
+   :caption: An object of sorts
+
+      typedef struct aoc_s {
+         size_t (*part1)(const list_t *data);
+         size_t (*part2)(const list_t *data);
+         const list_t *data;
+      } aoc_t;
+
+Any processing shall be carried out by the same constructor function that
+assigns the function addresses.
+By my own convention, let's call it ``transform``.
+We'll follow the same-case convention for naming the *constructor* function.
+
+.. code-block:: c
+   :linenos:
+   :caption: secret_entrance constructor
+
+      aoc_t *
+      secret_entrance(list_t *data) {
+         aoc_t me = {
+            .part1 = zeroes,
+            .part2 = clicks,
+            .data = transform(data)
+         };
+
+         return memdup((void *) &me, sizeof(me));
+      }
+
+... where the private/static ``transform`` function molests the lines of text
+into whatever's appropriate for that challenge, as well as the values
+for the parts.
+
+Over in ``bdd-for-c``-ville, where the ``part1`` and ``part2`` get called,
+I must also give those calls the (processed) data, because only C.
+
+.. code-block:: c
+   :linenos:
+   :caption: secret_entrance part 1
+
+      subject->part1(subject->data);
+
+One last thing: all functions internal to each challenge would normally be
+``static`` scoped, but I'll need to test them, and ``bdd-for-c`` can only
+work on symbols it can see, so the ``static`` is commented-out.
+
+This is probably overkill a bit, but I like never having to think about
+the innards of ``file_to_list`` ever again, that an incoming list is formed
+to that module, and every code common to each challenge is templated.
 
 
 .. keep toc-tree near the bottom so non-html expressions preserve content order
