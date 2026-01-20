@@ -9,7 +9,7 @@ SOURCEDIR     = source
 BUILDDIR      = build
 #
 VIRTUALDIR    = virtual
-PIPSNEEDED    = sphinx sphinx-readable-theme
+PIPSNEEDED    = sphinx sphinx-rtd-theme
 #
 define virtually
 	@. $(VIRTUALDIR)/bin/activate; $1 $2 $3 $4 $5 $6 $7
