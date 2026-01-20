@@ -30,7 +30,7 @@ agree with the given answers.
 Actual data tests no-op the result of each challenge (actual answer above),
 and then assert that those values haven't changed (results survive).
 
-This year, I'll attack each day's challenge in four different languages:
+This year, I'll attack each day's challenge in five different languages:
 
 #. ruby
 #. python
@@ -55,21 +55,21 @@ initialized with the list of text.
    :linenos:
    :caption: SecretEntrance in Ruby
 
-      module Aoc2025
-         class SecretEntrance
-            def initialize turns=[]
-               @turns = ...
-            end
+   module Aoc2025
+      class SecretEntrance
+         def initialize turns=[]
+            @turns = ...
          end
       end
+   end
 
 .. code-block:: python3
    :linenos:
    :caption: SecretEntrance in Python3
 
-      class SecretEntrance
-         def __init__(self, turns=list()):
-            self.turns = ...
+   class SecretEntrance
+      def __init__(self, turns=list()):
+         self.turns = ...
 
 
 In go, I define a ``struct`` as a list of (immutable) integers.
@@ -80,17 +80,17 @@ function that transforms the list of text into the list of numbers.
    :linenos:
    :caption: SecretEntrance in Go
 
-      type SecretEntrance struct {
-         Turns []int
-      }
+   type SecretEntrance struct {
+      Turns []int
+   }
 
-      func NewSecretEntrance(turns []string) *SecretEntrance {
-         me := &SecretEntrance {
-            Turns: make([]int, 0)
-         }
-         ...
-         me
+   func NewSecretEntrance(turns []string) *SecretEntrance {
+      me := &SecretEntrance {
+         Turns: make([]int, 0)
       }
+      ...
+      me
+   }
 
 Elixir expresses like ruby but as a nested ``module`` vice a ``class`` and no
 ``self.`` methods within. I do not know what the convention is for constructing
@@ -101,13 +101,13 @@ of the UpperCamelCase chapter/module name.
    :linenos:
    :caption: SecretEntrance in Elixir
 
-      defmodule Aoc2025.SecretEntrance do
-         def secret_entrance data do
-            Enum.map(data, fn(lyne) ->
-               ...
-            end)
-         end
+   defmodule Aoc2025.SecretEntrance do
+      def secret_entrance data do
+         Enum.map(data, fn(lyne) ->
+            ...
+         end)
       end
+   end
 
 I confess I like/appreciate the statelessness of the elixir approach,
 maybe because fresh.
@@ -119,20 +119,20 @@ is unionized against whatever each challenge requires; naming will be fun.
 
 .. code-block:: c
    :linenos:
-   :caption: Generic list payload
+   :caption: SecretEntrance in C; Generic list payload
 
-      typedef struct list_s {
-         union {
-            struct {
-               char *text;
-               size_t strlen;
-            } str;
-            long long int z;
-            size_t nn[2];
-         } u;
+   typedef struct list_s {
+      union {
+         struct {
+            char *text;
+            size_t strlen;
+         } str;
+         long long int z;
+         size_t nn[2];
+      } u;
 
-         struct list_s *next;
-      } list_t;
+      struct list_s *next;
+   } list_t;
 
 The *constructor* will take in a ``list_t *`` chain with the ``.u.str``
 populated, and will return an ``aoc_t`` structure that contains a ``list_t *``
@@ -141,13 +141,13 @@ chain that's possibly/likely been processed, and addresses to the ``part1`` and
 
 .. code-block:: c
    :linenos:
-   :caption: An object of sorts
+   :caption: SecretEntrance in C; An object of sorts
 
-      typedef struct aoc_s {
-         size_t (*part1)(const list_t *data);
-         size_t (*part2)(const list_t *data);
-         const list_t *data;
-      } aoc_t;
+   typedef struct aoc_s {
+      size_t (*part1)(const list_t *data);
+      size_t (*part2)(const list_t *data);
+      const list_t *data;
+   } aoc_t;
 
 Any processing shall be carried out by the same constructor function that
 assigns the function addresses.
@@ -156,31 +156,34 @@ We'll follow the same-case convention for naming the *constructor* function.
 
 .. code-block:: c
    :linenos:
-   :caption: secret_entrance constructor
+   :caption: SecretEntrance in C; A constructor of sorts
 
-      aoc_t *
-      secret_entrance(list_t *data) {
-         aoc_t me = {
-            .part1 = zeroes,
-            .part2 = clicks,
-            .data = transform(data)
-         };
+   aoc_t *
+   secret_entrance(list_t *data) {
+      aoc_t me = {
+         .part1 = zeroes,
+         .part2 = clicks,
+         .data = transform(data)
+      };
 
-         return memdup((void *) &me, sizeof(me));
-      }
+      return memdup((void *) &me, sizeof(me));
+   }
 
 ... where the private/static ``transform`` function molests the lines of text
 into whatever's appropriate for that challenge, as well as the values
 for the parts.
+(The ``memdup()`` here is a my more literal ``strdup(1)`` utility.)
 
 Over in ``bdd-for-c``-ville, where the ``part1`` and ``part2`` get called,
 I must also give those calls the (processed) data, because only C.
 
 .. code-block:: c
    :linenos:
-   :caption: secret_entrance part 1
+   :caption: SecretEntrance in C; Calling Part 1
 
-      subject->part1(subject->data);
+   aoc_t *subject = secret_entrance(file_to_list("day_01_sample.txt"));
+
+   subject->part1(subject->data);
 
 One last thing: all functions internal to each challenge would normally be
 ``static`` scoped, but I'll need to test them, and ``bdd-for-c`` can only
