@@ -90,16 +90,29 @@ mirror(size_t lower, size_t upper)
   return count;
 }
 
+
 static size_t
-mirrored(const list_t *data)
+repeat(size_t lower, size_t upper)
+{
+  return 0;
+}
+
+
+/*  dispatch a function over the range for each data item, or
+    sum dispatches for data that begin and end in different
+    magnitudes. For example, dispatch() on the range 55-79
+    calls the f() on that range, while dispatch() on the range
+    308-4458 sums the call of f() on 308-999 and a call to f()
+    on 1000-4458
+    */
+static size_t
+dispatch(size_t (*f)(size_t, size_t), const list_t *data)
 {
   register size_t accumulator = 0;
   register const list_t *item = NULL;
 
   register size_t lo_digits = 0;
   register size_t hi_digits = 0;
-
-  printf("\n");
 
   /*  restrict ranges to one magnitude each;
       85-108 becomes 85-99 and 100-108;
@@ -111,11 +124,11 @@ mirrored(const list_t *data)
 
     if (lo_digits < hi_digits) {
       accumulator +=
-        mirror(item->u.nn[0], pow10int(lo_digits)-1)  /*  85 - 99 */
-        + mirror(pow10int(lo_digits), item->u.nn[1]); /*  100 - 108 */
+        f(item->u.nn[0], pow10int(lo_digits)-1)  /*  85 - 99 */
+        + f(pow10int(lo_digits), item->u.nn[1]); /*  100 - 108 */
     }
     else if (lo_digits == hi_digits) {
-      accumulator += mirror(item->u.nn[0], item->u.nn[1]);
+      accumulator += f(item->u.nn[0], item->u.nn[1]);
     }
     else {
       ;
@@ -125,11 +138,17 @@ mirrored(const list_t *data)
   return accumulator;
 }
 
+static size_t
+mirrored(const list_t *data)
+{
+  return dispatch(mirror, data);
+}
+
 
 static size_t
 repeated(const list_t *data)
 {
-  return 0;
+  return dispatch(repeat, data);
 }
 
 /*  extract each comma-separated range from one line of text
