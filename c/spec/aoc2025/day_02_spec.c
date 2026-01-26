@@ -61,7 +61,7 @@ spec("Gift Shop") {
     }
 
     describe("Part 2") {
-      xit("sample data agrees") {
+      it("sample data agrees") {
         check(subject->part2(subject->data) == 4174379265);
       }
     }
@@ -83,12 +83,12 @@ spec("Gift Shop") {
     }
 
     describe("Part 2") {
-      xit("actual answer ==>") {
+      it("actual answer ==>") {
         printf("%lu ", subject->part2(subject->data));
       }
 
-      xit("results survive") {
-        check(subject->part2(subject->data) == 6684);
+      it("results survive") {
+        check(subject->part2(subject->data) == 45283684555);
       }
     }
   }
