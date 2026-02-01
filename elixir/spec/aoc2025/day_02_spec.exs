@@ -46,7 +46,7 @@ defmodule Aoc2025Spec.Day01 do
 
       it "results survive" do
         subject = Aoc2025Spec.Day01.subject
-        expect(Aoc2025.GiftShop.repeated(subject)) |> to(eq 6684)
+        expect(Aoc2025.GiftShop.repeated(subject)) |> to(eq 45283684555)
       end
     end
   end
