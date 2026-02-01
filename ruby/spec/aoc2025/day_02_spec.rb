@@ -35,7 +35,7 @@ module Aoc2025
         end
       end
 
-      describe "Part 2" ,:skip do
+      describe "Part 2" do
         it "actual answer above" do
           pp subject.repeated
         end

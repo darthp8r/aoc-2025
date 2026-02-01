@@ -17,7 +17,7 @@ with description('GiftShop'):
       with it('sample data agrees'):
         expect(self.subject.mirrored()).to(equal(1227775554))
 
-    with _description('Part 2'):
+    with description('Part 2'):
 
       with it('sample data agrees'):
         expect(self.subject.repeated()).to(equal(4174379265))
@@ -36,7 +36,7 @@ with description('GiftShop'):
       with it('results survive'):
         expect(self.subject.mirrored()).to(equal(38158151648))
 
-    with _description('Part 2'):
+    with description('Part 2'):
 
       with it('actual answer above'):
         print(self.subject.repeated())
