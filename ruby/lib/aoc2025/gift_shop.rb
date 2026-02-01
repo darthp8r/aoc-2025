@@ -66,8 +66,35 @@ module Aoc2025
       end
     end
 
+    # lo and hi are still strings
     private def repeats(lo, hi)
-      0
+      magnitude = lo.length
+
+      (1..magnitude/2).inject(Set.new) do |memo, digits|
+        if (magnitude % digits).zero?
+          scale = magnitude / digits
+          starter = lo[0...digits] * (scale)
+          increment = ("0"*(digits-1) + "1") * (scale)
+          memo += repetition(starter.to_i, lo.to_i, hi.to_i, increment.to_i)
+        end
+        memo
+      end.inject(0) do |memo, item|
+        memo + item
+      end
+    end
+
+    # all arguments are not integers
+    private def repetition(starter, lower, upper, increment)
+
+      # promote the starting value to the first above the lower bound
+      while starter < lower
+        starter += increment
+      end
+
+      # keep incrementing valid matches
+      (starter..upper).step(increment).inject(Set.new) do |memo, item|
+        memo.add item
+      end
     end
 
   end
