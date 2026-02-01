@@ -41,7 +41,7 @@ module Aoc2025
         end
 
         it "results survive" do
-          expect(subject.repeated).to eq 6684
+          expect(subject.repeated).to eq 45283684555
         end
       end
     end

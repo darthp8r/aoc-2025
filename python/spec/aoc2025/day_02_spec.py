@@ -42,5 +42,5 @@ with description('GiftShop'):
         print(self.subject.repeated())
 
       with it('results survive'):
-        expect(self.subject.repeated()).to(equal(6684))
+        expect(self.subject.repeated()).to(equal(45283684555))
 
