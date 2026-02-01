@@ -55,5 +55,40 @@ class GiftShop:
             return(0)
 
     def repeated(self):
-        return(0)
+        accumulator = 0
+        for (lo, hi) in self.ranges:
+            if len(lo) == len(hi):
+                accumulator += self.__repeat(lo, hi)
+            elif len(lo) < len(hi):
+                accumulator += \
+                    self.__repeat(lo, "9" * len(lo)) + self.__repeat("1" + "0" * len(lo), hi)
+            else:
+                0
+
+        return(accumulator)
+
+    def __repeat(self, lo, hi):
+        magnitude = len(lo)
+        accumulator = set()
+
+        for digits in range(1, 1+int(magnitude/2)):
+            if not (magnitude % digits):
+                scale = int(magnitude / digits)
+                starter = int(f"{lo[0:digits]}" * (scale))
+                increment = int(f"{'0'*(digits-1) + '1'}" * (scale))
+                localized = self.__repetition(starter, int(lo), int(hi), increment)
+                accumulator.update(localized)
+
+        return sum(accumulator)
+
+    def __repetition(self, starter, lower, upper, increment):
+        localized = set()
+
+        while (starter < lower):
+            starter += increment
+
+        for spam in range(starter, 1+upper, increment):
+            localized.add(spam)
+
+        return localized
 
