@@ -22,9 +22,10 @@ defmodule Aoc2025.GiftShop do
   # Yeah, thanks, C, for imposing an environment where a function dispatch
   # is the grokkest choice for manipulating the incoming data in the same
   # way needed by both/all transformers. Should've used in python, too.
-  # Ruby's a little weird with its Proc indirection, but that' because
-  # everything there has a value, too. A symbol would work there, too, come
-  # to think of it, but I'm now looking forward to how I can do this in go.
+  # Ruby's a little weird with its Proc indirection, but that's because
+  # everything there has a value (gets evaluated), too. Although ...
+  # ... a symbol would work there, too, come to think of it, but I wanna see
+  # how I can do dispatch in go.
   #
   defp dispatch(f, ranges) do
     Enum.reduce(ranges, 0, fn(item, memo) ->
@@ -85,9 +86,60 @@ defmodule Aoc2025.GiftShop do
   end
 
   def repeat(lo, hi) do
-    IO.puts "REPEATED #{lo} #{hi}"
-    #lo * hi
-    88
+    magnitude = String.length(lo)
+
+    # curious why I didn't need this test in other langauges
+    # single-digit numbers cannot have repetitions
+    #
+    if magnitude == 1 do
+      0
+
+    else
+       sum_map_set(
+         Enum.reduce(1..div(magnitude, 2), MapSet.new, fn(digits, memo) ->
+           if rem(magnitude, digits) == 0 do
+             scale = div(magnitude, digits)
+             starter = String.duplicate(String.slice(lo, 0..digits-1), scale)
+             increment = String.duplicate(String.duplicate("0", digits-1) <> "1", scale)
+             MapSet.union(
+               memo,
+               repetition(
+                 String.to_integer(starter),
+                 String.to_integer(lo), String.to_integer(hi),
+                 String.to_integer(increment)))
+           else
+             memo
+           end
+         end)
+       )
+    end
   end
+
+  defp repetition(starter, lower, upper, increment) do
+    # promote starter past lower, if necessary
+    if starter < lower do
+      repetition(starter+increment, lower, upper, increment)
+
+    # increment until out-of-bounds
+    else
+      Enum.reduce(starter..upper//increment, MapSet.new, fn(item, memo) ->
+        MapSet.put(memo, item)
+      end)
+    end
+  end
+
+  defp sum_map_set(map_set) do
+    Enum.reduce(MapSet.to_list(map_set), 0, fn(item, memo) ->
+      memo + item
+    end)
+  end
+
+# defp see_map_set(map_set, label) do
+#   IO.puts "^ \"#{label}\""
+#   Enum.map(MapSet.to_list(map_set), fn(me) ->
+#     IO.puts "^ #{me}"
+#   end)
+#   nil
+# end
 end
 
