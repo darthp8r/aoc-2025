@@ -14,7 +14,7 @@ defmodule Aoc2025Spec.Day02 do
       end
     end
 
-    xdescribe "Part 2" do
+    describe "Part 2" do
       it "sample data agrees" do
         subject = Aoc2025Spec.Day02.subject
         expect(Aoc2025.GiftShop.repeated(subject)) |> to(eq 4174379265)
@@ -38,7 +38,7 @@ defmodule Aoc2025Spec.Day02 do
       end
     end
 
-    xdescribe "Part 2" do
+    describe "Part 2" do
       it "actual answer above" do
         subject = Aoc2025Spec.Day02.subject
         IO.puts Aoc2025.GiftShop.repeated(subject)
