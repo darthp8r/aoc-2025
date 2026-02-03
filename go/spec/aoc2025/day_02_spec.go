@@ -11,6 +11,21 @@ import (
 )
 
 var _ = Describe("GiftShop", func() {
+	Context("Supports", Focus, func() {
+		Describe("Pow10", Focus, func() {
+			It("10^0 is 1", func(ctx SpecContext) {
+				Expect(Pow10(0)).To(Equal(1))
+			})
+
+			It("10^1 is 10", func(ctx SpecContext) {
+				Expect(Pow10(1)).To(Equal(10))
+			})
+
+			It("10^5 is 100000", func(ctx SpecContext) {
+				Expect(Pow10(5)).To(Equal(100000))
+			})
+		})
+
 		Describe("Dig10", Focus, func() {
 			It("6 has ONE digit", func(ctx SpecContext) {
 				Expect(Dig10(6)).To(Equal(1))
