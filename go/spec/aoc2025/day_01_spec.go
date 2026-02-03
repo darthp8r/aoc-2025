@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 
-	. "darthp8r.net/aoc2025/lib"
+	. "darthp8r.net/aoc2025/lib/aoc2025"
 	. "darthp8r.net/aoc2025/spec/support"
 )
 
