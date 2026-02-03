@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	.	"darthp8r.net/aoc2025/support"
+	.	"darthp8r.net/aoc2025/spec/support"
 )
 
 func main() {
