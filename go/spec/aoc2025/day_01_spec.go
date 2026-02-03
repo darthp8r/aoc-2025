@@ -10,7 +10,7 @@ import (
 	. "darthp8r.net/aoc2025/spec/support"
 )
 
-var _ = Describe("SecretEntrance", Serial, func() {
+var _ = Describe("SecretEntrance", func() {
 	Context("Sample", func() {
 		subject := NewSecretEntrance(FileToList("day_01_sample.txt"))
 
