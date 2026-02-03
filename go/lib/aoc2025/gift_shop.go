@@ -1,10 +1,10 @@
 package aoc2025
 
-/*
 import (
 	"strconv"
+	"fmt"
+	"strings"
 )
-*/
 
 type rrange struct {
 	Lo, Hi int
@@ -13,6 +13,7 @@ type rrange struct {
 type GiftShop struct {
 	Ranges []rrange
 }
+
 
 
 /*	Seems that idiomatic go is to have this New$(STRUCTNAME) constructor
@@ -24,16 +25,121 @@ func NewGiftShop(ranges []string) *GiftShop {
 		Ranges: make([]rrange, 0),
 	}
 
+	/*	This one's different, in that items are comma-separated vice line.
+		Internally, express each range as a dash-separated natural numbers.
+		Return a list of those pairs.
+	*/
+
+	for _, value := range strings.Split(ranges[0], ",") {
+		//	is there a more idiomatic way?
+		tmp := strings.Split(value, "-")
+		lo, _ := strconv.Atoi(tmp[0])
+		hi, _ := strconv.Atoi(tmp[1])
+
+		item := rrange {
+			Lo:	lo,
+			Hi:	hi,
+		}
+
+		me.Ranges = append(me.Ranges, item)
+	}
+
 	return me
 }
 
 
+/*	Yes to dispatching the part1 or part2 algorithms against the same
+	pre-processed list of ranges. Heh, my fifth language implementation,
+	and I only now realize that the dispatch function logic could more
+	easily handled by manipulating the input into the magnitude-bound
+	ranges at initialization, and then apply the 'reduce()' to that list
+	uninterrogated. :) I suppose I can claim total fidelity to the input,
+	but there things that I know we can know we know going in. Shrug.
+	Dispatch is kewl, tho
+*/
 func (me GiftShop) Mirrored() int {
-	return 0
+	return me.dispatch(mirror)
+}
+//
+func (me GiftShop) Repeated() int {
+	return me.dispatch(repeat)
 }
 
 
-func (me GiftShop) Repeated() int {
+/*	Each range shall be restricted to the same power-of-ten; ranges
+	that infringe into a higher power are split into two ranges and then
+	summed. For example, the range 42-69 remains unchanged as one range,
+	while the range 108-1066 gets split into 108-999 and 1000-1066 and
+	then summed.
+*/
+func (me GiftShop) dispatch(f func(lo, hi int) int) int {
+	accumulator := 0
+
+	for _, item := range me.Ranges {
+		lo_digits, hi_digits := Dig10(item.Lo), Dig10(item.Hi)
+
+		/*	would love a ternary '<' (et al) operation */
+		switch {
+		/*	42-69 remain intact */
+		case lo_digits == hi_digits:
+			accumulator += f(item.Lo, item.Hi)
+
+		/*	42-108 split into 42-99 and 100-108 */
+		case lo_digits < hi_digits:
+			crossover := Pow10(lo_digits)
+			accumulator += f(item.Lo, crossover-1) + f(crossover, item.Hi)
+
+		/*	I know, wierd, but I wanted to have 'default' explicitly covered,
+			*and* for 'switch' to return a value, i.e. accumulator += switch { }
+		*/
+		default:
+			accumulator += 0
+		}
+	}
+
+	return accumulator
+}
+
+
+/*	subsequent are no longer associated with the GiftShop type/struct(class);
+	similar to (private) classmethods or namespaced (re-entrant!) functions
+*/
+
+func mirror(lo, hi int) int {
+	fmt.Printf("=== M %d %d\n", lo, hi)
+
+	return lo + hi
+}
+
+
+func repeat(lo, hi int) int {
+	fmt.Printf("==+ R %d %d\n", lo, hi)
+
+	return 10 * (lo + hi)
+}
+
+
+func Pow10(n int) int {
+	m := 1
+
+	for exp := 0; exp < n; exp++ {
+		m *= 10
+	}
+
+	return m
+}
+
+func Dig10(n int) int {
+	m := 10
+
+	for digits := 1; digits < 12; digits++ {
+		/*	style becomes syntax; 'else' must tightly cuddle */
+		if n < m {
+			return digits
+		} else {
+			m *= 10
+		}
+	}
 	return 0
 }
 
