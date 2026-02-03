@@ -34,7 +34,7 @@ dig10int(size_t n)
     }
   }
 
-  return (size_t) -1;
+  return (size_t) 0;
 }
 
 
