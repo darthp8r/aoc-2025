@@ -11,16 +11,47 @@ import (
 )
 
 var _ = Describe("GiftShop", func() {
-	Context("Sample", func() {
-		subject := NewGiftShop(FileToList("day_01_sample.txt"))
+		Describe("Dig10", Focus, func() {
+			It("6 has ONE digit", func(ctx SpecContext) {
+				Expect(Dig10(6)).To(Equal(1))
+			})
 
-		Describe("Part 1", Label("Mirrored"), func() {
+			It("42 has TWO digits", func(ctx SpecContext) {
+				Expect(Dig10(42)).To(Equal(2))
+			})
+
+			It("100 has THREE digits", func(ctx SpecContext) {
+				Expect(Dig10(100)).To(Equal(3))
+			})
+
+			It("10000 has FIVE digits", func(ctx SpecContext) {
+				Expect(Dig10(10000)).To(Equal(5))
+			})
+
+			It("32768 has FIVE digits", func(ctx SpecContext) {
+				Expect(Dig10(32768)).To(Equal(5))
+			})
+		})
+	})
+
+	Context("Sample", func() {
+		subject := NewGiftShop(FileToList("day_02_sample.txt"))
+
+		Describe("Dunsels", Focus, func() {
+			It("show me", func(ctx SpecContext) {
+				for _, value := range subject.Ranges {
+					fmt.Printf("(%d %d)\n", value.Lo, value.Hi)
+				}
+			})
+		})
+
+		Describe("Part 1", Focus, func() {
 			It("sample data agrees", func(ctx SpecContext) {
 				Expect(subject.Mirrored()).To(Equal(1227775554))
 			})
 		})
 
-		Describe("Part 2", Label("Repeated"), func() {
+		Describe("Part 2", func() {
 			It("sample data agrees", func(ctx SpecContext) {
 				Expect(subject.Repeated()).To(Equal(4174379265))
 			})
@@ -28,9 +59,9 @@ var _ = Describe("GiftShop", func() {
 	})
 
 	Context("Actual", func() {
-		subject := NewGiftShop(FileToList("day_01_actual.txt"))
+		subject := NewGiftShop(FileToList("day_02_actual.txt"))
 
-		Describe("Part 1", Label("Mirrored"), func() {
+		Describe("Part 1", func() {
 			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Mirrored())
 			})
@@ -40,7 +71,7 @@ var _ = Describe("GiftShop", func() {
 			})
 		})
 
-		Describe("Part 2", Label("Repeated"), func() {
+		Describe("Part 2", func() {
 			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Repeated())
 			})
