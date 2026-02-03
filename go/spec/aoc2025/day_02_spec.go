@@ -10,7 +10,7 @@ import (
 	. "darthp8r.net/aoc2025/spec/support"
 )
 
-var _ = Describe("GiftShop", Label("GiftShop"), func() {
+var _ = Describe("GiftShop", Serial, func() {
 	Context("Sample", func() {
 		subject := NewGiftShop(FileToList("day_01_sample.txt"))
 
