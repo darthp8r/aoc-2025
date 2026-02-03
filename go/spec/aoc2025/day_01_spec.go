@@ -14,7 +14,7 @@ var _ = Describe("SecretEntrance", func() {
 	Context("Sample", func() {
 		subject := NewSecretEntrance(FileToList("day_01_sample.txt"))
 
-		Describe("Part 1", Label("Zeroes"), func() {
+		Describe("Part 1", func() {
 			It("dunsels", func(ctx SpecContext) {
 				subject.Zeroes()
 			})
@@ -37,7 +37,7 @@ var _ = Describe("SecretEntrance", func() {
 			})
 		})
 
-		Describe("Part 2", Label("Clicks"), func() {
+		Describe("Part 2", func() {
 			It("sample data agrees", func(ctx SpecContext) {
 				Expect(subject.Clicks()).To(Equal(6))
 			})
@@ -47,7 +47,7 @@ var _ = Describe("SecretEntrance", func() {
 	Context("Actual", func() {
 		subject := NewSecretEntrance(FileToList("day_01_actual.txt"))
 
-		Describe("Part 1", Label("Zeroes"), func() {
+		Describe("Part 1", func() {
 			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Zeroes())
 			})
@@ -57,7 +57,7 @@ var _ = Describe("SecretEntrance", func() {
 			})
 		})
 
-		Describe("Part 2", Label("Clicks"), func() {
+		Describe("Part 2", func() {
 			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Clicks())
 			})
