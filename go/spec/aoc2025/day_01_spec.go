@@ -48,7 +48,7 @@ var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 		subject := NewSecretEntrance(FileToList("day_01_actual.txt"))
 
 		Describe("Part 1", Label("Zeroes"), func() {
-			It("actual answer above", func(ctx SpecContext) {
+			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Zeroes())
 			})
 
@@ -58,7 +58,7 @@ var _ = Describe("SecretEntrance", Label("SecretEntrance"), func() {
 		})
 
 		Describe("Part 2", Label("Clicks"), func() {
-			It("actual answer above", func(ctx SpecContext) {
+			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Clicks())
 			})
 

@@ -31,7 +31,7 @@ var _ = Describe("GiftShop", Label("GiftShop"), func() {
 		subject := NewGiftShop(FileToList("day_01_actual.txt"))
 
 		Describe("Part 1", Label("Mirrored"), func() {
-			It("actual answer above", func(ctx SpecContext) {
+			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Mirrored())
 			})
 
@@ -41,7 +41,7 @@ var _ = Describe("GiftShop", Label("GiftShop"), func() {
 		})
 
 		Describe("Part 2", Label("Repeated"), func() {
-			It("actual answer above", func(ctx SpecContext) {
+			It("actual answer below", func(ctx SpecContext) {
 				fmt.Println(subject.Repeated())
 			})
 
