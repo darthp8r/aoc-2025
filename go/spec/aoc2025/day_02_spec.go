@@ -11,8 +11,8 @@ import (
 )
 
 var _ = Describe("GiftShop", func() {
-	Context("Supports", Focus, func() {
-		Describe("Pow10", Focus, func() {
+	Context("Supports", Pending, func() {
+		Describe("Pow10", func() {
 			It("10^0 is 1", func(ctx SpecContext) {
 				Expect(Pow10(0)).To(Equal(1))
 			})
@@ -26,7 +26,7 @@ var _ = Describe("GiftShop", func() {
 			})
 		})
 
-		Describe("Dig10", Focus, func() {
+		Describe("Dig10", func() {
 			It("6 has ONE digit", func(ctx SpecContext) {
 				Expect(Dig10(6)).To(Equal(1))
 			})
@@ -52,15 +52,7 @@ var _ = Describe("GiftShop", func() {
 	Context("Sample", func() {
 		subject := NewGiftShop(FileToList("day_02_sample.txt"))
 
-		Describe("Dunsels", Focus, func() {
-			It("show me", func(ctx SpecContext) {
-				for _, value := range subject.Ranges {
-					fmt.Printf("(%d %d)\n", value.Lo, value.Hi)
-				}
-			})
-		})
-
-		Describe("Part 1", Focus, func() {
+		Describe("Part 1", func() {
 			It("sample data agrees", func(ctx SpecContext) {
 				Expect(subject.Mirrored()).To(Equal(1227775554))
 			})

@@ -72,7 +72,7 @@ func (me GiftShop) Repeated() int {
 	while the range 108-1066 gets split into 108-999 and 1000-1066 and
 	then summed.
 */
-func (me GiftShop) dispatch(f func(lo, hi int) int) int {
+func (me GiftShop) dispatch(f func(lower, upper int) int) int {
 	accumulator := 0
 
 	for _, item := range me.Ranges {
@@ -80,6 +80,7 @@ func (me GiftShop) dispatch(f func(lo, hi int) int) int {
 
 		/*	would love a ternary '<' (et al) operation */
 		switch {
+
 		/*	42-69 remain intact */
 		case lo_digits == hi_digits:
 			accumulator += f(item.Lo, item.Hi)
@@ -89,7 +90,7 @@ func (me GiftShop) dispatch(f func(lo, hi int) int) int {
 			crossover := Pow10(lo_digits)
 			accumulator += f(item.Lo, crossover-1) + f(crossover, item.Hi)
 
-		/*	I know, wierd, but I wanted to have 'default' explicitly covered,
+		/*	I know, weird, but I wanted to have 'default' explicitly covered,
 			*and* for 'switch' to return a value, i.e. accumulator += switch { }
 		*/
 		default:
@@ -105,20 +106,56 @@ func (me GiftShop) dispatch(f func(lo, hi int) int) int {
 	similar to (private) classmethods or namespaced (re-entrant!) functions
 */
 
-func mirror(lo, hi int) int {
-	fmt.Printf("=== M %d %d\n", lo, hi)
+func mirror(lower, upper int) int {
+	/*	why I canna have const? */
+	increments := []int {
+		11,     	/*	11, 22, 33, 44 */
+		101,    	/*	2323, 2424, 2525 */
+		1001,   	/*	304304, 305305, 306306 */
+		10001,  	/*	45064506, 45074507, 45084508 */
+		100001, 	/*	5600756007, 5600856008, 5600956009 */ 
+		1000001,	/*	670009670009, 670010670010, 670011670011 */
+	}
 
-	return lo + hi
+	count := 0
+
+	if (Dig10(lower) % 2) == 0 {
+		zeroes := (Dig10(lower)-1) / 2
+		magnitude := Pow10(1+zeroes)
+
+		hi := lower / magnitude
+		lo := lower % magnitude
+
+		switch {
+		case lo < hi:
+			lo = hi
+		case lo == hi:
+		default:
+			hi += 1
+			lo = hi
+		}
+
+		/*	advance to the first possible match */
+		lower = (lo*magnitude) + lo
+		for ; lower <= upper; {
+			count += lower
+			lower += increments[zeroes]
+		}
+
+	}
+
+	return count
 }
 
 
-func repeat(lo, hi int) int {
-	fmt.Printf("==+ R %d %d\n", lo, hi)
+func repeat(lower, upper int) int {
+	fmt.Printf("==+ R %d %d\n", lower, upper)
 
-	return 10 * (lo + hi)
+	return 10 * (lower + upper)
 }
 
 
+/*	integer 10^n */
 func Pow10(n int) int {
 	m := 1
 
@@ -129,6 +166,7 @@ func Pow10(n int) int {
 	return m
 }
 
+/*	integer number of base-10 digits */
 func Dig10(n int) int {
 	m := 10
 
@@ -140,6 +178,7 @@ func Dig10(n int) int {
 			m *= 10
 		}
 	}
+
 	return 0
 }
 
