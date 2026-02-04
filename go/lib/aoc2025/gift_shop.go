@@ -2,7 +2,6 @@ package aoc2025
 
 import (
 	"strconv"
-	"fmt"
 	"strings"
 )
 
@@ -141,7 +140,6 @@ func mirror(lower, upper int) int {
 			count += lower
 			lower += increments[zeroes]
 		}
-
 	}
 
 	return count
@@ -149,9 +147,49 @@ func mirror(lower, upper int) int {
 
 
 func repeat(lower, upper int) int {
-	fmt.Printf("==+ R %d %d\n", lower, upper)
+	count := 0
+	magnitude := Dig10(lower)
+	accumulator := make(map[int]int)
 
-	return 10 * (lower + upper)
+	if 0 < magnitude {
+		halfitude := magnitude / 2
+		for digits := 1; digits <= halfitude; digits++ {
+			if (magnitude % digits) == 0 {
+				copies := magnitude / digits
+				sample := lower / Pow10(magnitude-digits)
+				starter := 0
+				increment := 0
+				for shift := 0; shift < copies; shift++ {
+					boost := Pow10(shift*digits)
+					starter += sample * boost
+					increment += boost
+				}
+
+				for partial := range repetition(starter, lower, upper, increment) {
+					accumulator[partial] += 1
+				}
+			}
+		}
+
+		for partial := range accumulator {
+			count += partial
+		}
+	}
+
+	return count
+}
+
+
+func repetition(starter, lower, upper, increment int) map[int]int {
+	for ; starter < lower; starter += increment {}
+
+	acc := make(map[int]int)
+
+	for ; starter <= upper; starter += increment {
+		acc[starter] += 1
+	}
+
+	return acc
 }
 
 
