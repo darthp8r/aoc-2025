@@ -11,7 +11,7 @@ import (
 )
 
 var _ = Describe("GiftShop", func() {
-	Context("Supports", Pending, func() {
+	Context("Supports", func() {
 		Describe("Pow10", func() {
 			It("10^0 is 1", func(ctx SpecContext) {
 				Expect(Pow10(0)).To(Equal(1))
