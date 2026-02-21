@@ -6,17 +6,21 @@ Ruby because I love it.
 Python and Go because they're popular.
 Elixir because cool.
 C because kids.
+Ada because maybe job-related.
+Lua because fantasy.
 COBOL (maybe) because it keeps surfacing in my news feeds or other interest vehicles.
 
-This year it's [FreeBSD](https://www.freebsd.org) 14.3-RELEASE for my development environment.
+This year it's [FreeBSD](https://www.freebsd.org) 15.0-RELEASE for my development environment.
 
 | language  | version   | pkg install   | testing       | notes |
 | --------- | --------- | ------------- | ------------- | ------------- |
-|   ruby    |   3.4.7   |   ruby-3      |   rspec       |   3.3.9 system, 3.4.7 virtualized in rvm  |
-|   python  |   3.11.13 |   python311   |   mamba       |   |
-|   go      |   1.24-13 |   go          |   ginkgo      |   |
-|   elixir  |   1.17    |   elixir      |   espec       |   erlang 26.2.5.15,4  |
+|   ruby    |   3.4.7   |   ruby-3      |   rspec       |   3.4.7 virtualized in rvm  |
+|   python  |   3.14.3  |   python314   |   mamba       |   |
+|   go      |   1.24-18 |   go          |   ginkgo      |   |
+|   elixir  |   1.17.3  |   elixir      |   espec       |   erlang 26.2.5.16,4  |
 |   c       |   19.1.7  |   (n/a)       |   bdd-for-c   |   |
+|   ada     |   14.2.0  |   gnat14      |   UNK         |   |
+|   lua     |   5.4.8   |   lua54       |   UNK         |   |
 |   cobol   |   3.2-3   |   gnucobol    |   UNK         |   |
 
 Support structures
@@ -25,7 +29,7 @@ Support structures
 |   ----------- |   ----------- |   --- |
 |   lynx        |   2.8.9.1-3.1 |   text/console web browser    |
 |   markdown    |   1.0.1-2     |   convert markdown to html    |
-|   pandoc      |   3.8.1-1     |   hs-pandoc convert markdown to html    |
+|   pandoc      |   3.8.3       |   hs-pandoc convert markdown to html    |
 |   rtd_theme   |   1.0.0-1     |   sphinx documentation generator theme    |
 
 
