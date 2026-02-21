@@ -1,0 +1,3 @@
+[submodule "c/bdd-for-c"]
+	path = c/bdd-for-c
+	url = https://github.com/grassator/bdd-for-c
