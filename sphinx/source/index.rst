@@ -7,7 +7,7 @@
 Advent of Code 2025, Polyglot Edition
 #####################################
 
-Advent of Code
+`Advent of Code <https://www.adventofcode.com/>`_
 is an n-week exercise in the ``map`` and ``reduce`` list operations;
 every challenge *reduces* a *transformed* list of text down to one numeric value.
 There may be other filtering intervals along the way, but the answer to each
