@@ -15,5 +15,6 @@ update-deps:
 
 .PHONY: setup
 setup:
+	MIX_ENV=test mix deps.get
 	MIX_ENV=test mix espec.init
 
