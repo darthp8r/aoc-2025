@@ -15,7 +15,7 @@ This year it's [FreeBSD](https://www.freebsd.org) 15.0-RELEASE for my developmen
 | language  | version   | pkg install   | testing       | notes |
 | --------- | --------- | ------------- | ------------- | ------------- |
 |   ruby    |   3.4.7   |   ruby-3      |   rspec       |   3.4.7 virtualized in rvm  |
-|   python  |   3.14.3  |   python314   |   mamba       |   |
+|   python  |   3.11.14 |   python311   |   mamba       |   py311-sqlite3 |
 |   go      |   1.24-18 |   go          |   ginkgo      |   |
 |   elixir  |   1.17.3  |   elixir      |   espec       |   erlang 26.2.5.16,4  |
 |   c       |   19.1.7  |   (n/a)       |   bdd-for-c   |   |
