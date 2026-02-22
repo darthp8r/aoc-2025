@@ -48,9 +48,36 @@ Tell your computer `rspec spec -e TreacheryOfWhales` to run only those examples,
 or, if you know the day, say `rspec spec/aoc2025/day_07_spec.rb` instead.
 
 
+##  RVM
+
+`rvm(8)` is one of a few virtual environment packages for ruby. curl-pipe-bash ftl
+
+```
+% curl -sSL https://get.rvm.io | bash -s stable
+```
+
+One of its earlier tasks is to update the whole-@$$ system: a bold move imho.
+It uses `sudo(1)` to that affect. FreeBSD culture seems to eschew `sudo(1)`
+in favor of `su(1)` to root. *My trick* is to create my own `/usr/local/bin/sudo`
+executable. Judge away:
+
+```sh
+#!/usr/bin/env sh
+#
+echo ${@}
+```
+
+Now I can install `rvm(1)` as above and then a modern ruby:
+
+```sh
+% rvm install ruby-3.4.7
+% rvm alias create default ruby-3.4.7
+```
+
+
 ##  Development
 
-`rvm` places you in a virtual environment.
+`rvm` places you in a virtual environment automagically when you `cd(0)` into a controlled folder.
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
