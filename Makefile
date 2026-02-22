@@ -43,5 +43,5 @@ sphinx:
 
 
 .PHONY: all
-all:	ruby python go elixir sphinx c
+all:	ruby python go elixir c sphinx
 
