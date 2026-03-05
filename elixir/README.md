@@ -1,4 +1,4 @@
-# Aoc2025 (Elixir (erts-14.2.5.11) on OTP 26)
+#   Aoc2025 (Elixir (erts-14.2.5.11) on OTP 26)
 
 Advent-of-Code 2025
 
