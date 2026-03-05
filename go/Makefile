@@ -19,3 +19,13 @@ vet:
 #	go get -u ./...
 #	go mod tidy
 
+.PHONY: setup
+setup:
+	go install github.com/onsi/ginkgo/v2/ginkgo
+	$(info ! Add $${HOME}/go/bin to your $${PATH})
+	go get github.com/onsi/gomega
+	# go get -u ./...
+	go mod tidy
+	@echo go get darthp8r.net/aoc2025
+	@echo go get darthp8r.net/aoc2025/spec
+

@@ -1,5 +1,7 @@
 #   Aoc2025 (c clang 19.7.1)
 
+Advent of Code 2025
+
 Yup, `rspec` testing to prove challenge apps, again.
 
 ```

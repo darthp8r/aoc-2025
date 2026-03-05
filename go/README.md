@@ -1,4 +1,4 @@
-# Aoc2025 (Go 1.24.9)
+#   Aoc2025 (Go 1.25.0)
 
 Advent-of-Code 2025
 
@@ -11,14 +11,14 @@ Standard stuff:
 Add this line to your application's _require_ clause in `go.mod`
 
 ```
-github.com/darthp8r/aoc2025 v2.2025.0
+darthp8r.net/aoc2025 v2.2025.0
 ```
 
 
 ##  Usage
 
 ```go
-require github.com/darthp8r/aoc2025
+require darthp8r.net/aoc2025
 ```
 
 
@@ -51,5 +51,5 @@ thereunder, whhich may have files in them themselves.
 
 Studying `https://github.com/onsi/ginkgo/blob/master/types/types.go
 
-    $ go install github.com/darthp8r/aoc-2025/go/lib
+    $ go install darthp8r.net/aoc-2025/go/lib
 
