@@ -19,6 +19,15 @@ Of course that utility has its own test!
 See `spec/support_spec/file_to_list_spec.c`
 
 
+##  Setup
+
+```
+% cd bdd-for-c
+% git submodule init .
+% git submodule update
+```
+
+
 ##  Daily Challenges
 
 Each daily challenge works on a list of non-empty character strings,
@@ -168,6 +177,7 @@ You'll notice I don't bother with calling `free(1)` anywhere except in the
 file-reading support function. I'm intentionally letting it all leak out
 on `exit(1)` because that nitty-gritty isn't (as) germane to solving each
 challenge, at least not nearly as much as allocting memory is necessary.
+
 
 ##  Semicolophon
 
